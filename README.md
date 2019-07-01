@@ -1,2 +1,5 @@
-# 4mediasoft
-Homework
+# Задание №1 для Mediasoft
+1. Подключить модуль расширения mbstring 
+2. Выполнить скрипт в интерпретаторе
+
+_**Artem Pudov**_
