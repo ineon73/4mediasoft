@@ -10,8 +10,6 @@ $text = "Верьте аль не верьте, а жил на белом све
     в ем — агромадный объем. Смотрит на Федьку, как язвенник на редьку.
     На Федьке от страха намокла рубаха, в висках застучало, в пузе заурчало, тут,
     как говорится, и сказке начало…";
-$sum = 0;
-$word = "ни";
 
 function cleanText($text)
 {
@@ -19,17 +17,14 @@ function cleanText($text)
     $symbol = [',', '.', '!', ':', ';', '?', '...', '"', '—'];
     $format = str_replace($symbol, '', $a); // очищаем слова в массиве от символов
     $format = array_diff($format, array('')); // удаляем пустые значения в массиве (лишние пробелы)
+    foreach ($format as &$value) {
+        $value = mb_strtolower($value);
+    }
     return $format;
 }
 
 $format = cleanText($text);
 $result = count($format);
-foreach ($format as &$value) {
-    if (mb_strtolower($value) === $word) {
-        $sum++;
-    }
-}
-
-echo "{$word} : {$sum}" . PHP_EOL;
+print_r(array_count_values($format));
 echo "..." . PHP_EOL;
 echo "Всего слов: {$result}";
