@@ -1,0 +1,27 @@
+CREATE TABLE `text_origin` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`text` TEXT NOT NULL,
+	`result` INT(11) NOT NULL,
+	`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`ip` VARCHAR(255) NOT NULL,
+	`download` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=22
+;
+
+CREATE TABLE `text_result` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`word` VARCHAR(255) NOT NULL,
+	`count` INT(11) NOT NULL,
+	`text_id` INT(11) NOT NULL,
+	PRIMARY KEY (`id`),
+	INDEX `text_id` (`text_id`),
+	CONSTRAINT `text_result_ibfk_1` FOREIGN KEY (`text_id`) REFERENCES `text_origin` (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=62
+;
